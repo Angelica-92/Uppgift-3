@@ -1,0 +1,21 @@
+@extends('products.master')
+
+@section('content')
+
+<h1>Lägg till en ny produkt</h1>
+
+<form action="/products" method="post">
+  {{ csrf_field() }}
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" name="title" placeholder="Skriv titel här...">
+  </div>
+  <div class="form-group">
+    <label for="price">Pris</label>
+    <input type="number" class="form-control" id="price" name="price" placeholder="Skriv pris här...">
+  </div>
+  <input type="submit" value="Spara product" class="btn btn-success">
+</form>
+
+
+@endsection
