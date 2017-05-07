@@ -23,13 +23,13 @@ class ProductsTableSeeder extends Seeder
             'album' => 'Kristaller',
             'title' => 'Laleh',
             'price' => 150,
-
             'image' => 'http://gfx.bloggar.aftonbladet-cdn.se/wp-content/blogs.dir/456/files/2016/09/KRISTALLER-COVER.',
           ],
           [
-
+            'album' => '25',
             'title' => 'Adele',
             'price' => 99,
+            'image' => 'https://s-media-cache-ak0.pinimg.com/736x/a9/95/9c/a9959c17c8260650136fdc4a7d8bb218.jpg',
           ]
         ]);
     }
