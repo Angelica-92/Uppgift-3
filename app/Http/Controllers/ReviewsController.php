@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Review;
 
 class ReviewsController extends Controller
 {
@@ -13,7 +14,10 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        //
+      $reviews = Review::all();
+      return view("products.index", [
+      "reviews" => $reviews
+      ]);
     }
 
     /**
@@ -45,7 +49,10 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-        //
+      $review = Review::find($id);
+      return view("products.show", [
+       "review" => $review
+     ]);
     }
 
     /**
