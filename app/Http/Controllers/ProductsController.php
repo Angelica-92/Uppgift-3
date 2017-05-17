@@ -1,8 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\Store;
+use App\Review;
+
 
 class ProductsController extends Controller
 {
@@ -15,10 +18,9 @@ class ProductsController extends Controller
     {
       $products = Product::all();
       return view("products.index", [
-      "products" => $products
-    ]);
+      "products" => $products,
+      ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +28,10 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view("products.create");
+      $stores = Store::all();
+      return view("products.create", [
+      "stores" => $stores,
+      ]);
     }
 
     /**
@@ -38,8 +43,10 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
       $product = new Product;
+      $product->album = $request->get("album");
       $product->title = $request->get("title");
       $product->price = $request->get("price");
+      $product->image = $request->get("image");
       $product->save();
       return redirect()->action('ProductsController@index')->with('status', 'Produkten är sparad!');
     }
@@ -53,9 +60,13 @@ class ProductsController extends Controller
     public function show($id)
     {
       $product = Product::find($id);
+      $review = Review::find($id);
+      $store = Store::find($id);
       return view("products.show", [
-      "product" => $product
-   ]);
+       "product" => $product,
+       "review" => $review,
+       "store" => $store
+     ]);
     }
 
     /**
@@ -68,8 +79,8 @@ class ProductsController extends Controller
     {
       $product = Product::find($id);
       return view("products.edit", [
-      "product" => $product
-   ]);
+       "product" => $product
+     ]);
     }
 
     /**
@@ -82,8 +93,10 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
       $product = Product::find($id);
+      $product->album = $request->get("album");
       $product->title = $request->get("title");
       $product->price = $request->get("price");
+      $product->image = $request->get("image");
       $product->save();
       return redirect()->action('ProductsController@index')->with('status', 'Produkten är nu uppdaterad!');
     }

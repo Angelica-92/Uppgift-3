@@ -12,21 +12,33 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('products.start');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Requires user to be logged in to access pages
 Route::group(["middleware" => "auth"], function () {
-
   Route::resource('products', 'ProductsController', ['except' => [
-      'show', 'index'
+      'show', 'index', 'start'
   ]]);
-
+  Route::resource('reviews', 'ReviewsController', ['except' => [
+      'show', 'index', 'start'
+  ]]);
+  Route::resource('stores', 'StoresController', ['except' => [
+      'show', 'index', 'start'
+  ]]);
 });
 
+//index, show and start can be accessed without being logged in
 Route::resource('products', 'ProductsController', ['only' => [
-    'index', 'show'
+    'index', 'show', 'start'
+]]);
+Route::resource('reviews', 'ReviewsController', ['only' => [
+    'index', 'show', 'start'
+]]);
+Route::resource('stores', 'StoresController', ['only' => [
+    'index', 'show', 'start'
 ]]);
