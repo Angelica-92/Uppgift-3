@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Redigera en produkt</h1>
+<h2>Redigera en produkt</h2>
 
 <form action="/products/{{ $product->id }}" method="post">
   <input type="hidden" name="_method" value="PUT">

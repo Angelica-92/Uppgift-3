@@ -8,4 +8,5 @@ class Store extends Model
 {
   public function products() {
   return $this->belongsToMany('App\Product');
+  }
 }

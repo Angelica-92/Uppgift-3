@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Lägg till en ny produkt</h1>
+<h2>Lägg till en ny produkt</h2>
 
 <form action="/products" method="post">
   {{ csrf_field() }}
@@ -22,8 +22,14 @@
     <label for="image">Bild</label>
     <input type="text" class="form-control" id="image" name="image" placeholder="Skriv url här för att hämta bild...">
   </div>
-  <input type="submit" value="Spara product" class="btn btn-success">
-</form>
-
-
+  <br>
+  @foreach($stores as $store)
+    <br>
+    <label class="checkbox-inline"><input type="checkbox" value=""> {{ $store->name }}, {{ $store->city }}</label>
+    <br>
+  @endforeach
+  <br>
+  <br>
+  <input type="submit" value="Spara product" class="btn btn-success"><p></p>
+  </form>
 @endsection

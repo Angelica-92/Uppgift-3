@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Demands user to be logged in to access pages
+//Requires user to be logged in to access pages
 Route::group(["middleware" => "auth"], function () {
   Route::resource('products', 'ProductsController', ['except' => [
       'show', 'index', 'start'
@@ -32,7 +32,7 @@ Route::group(["middleware" => "auth"], function () {
   ]]);
 });
 
-//index and show can be accessed without being logged in
+//index, show and start can be accessed without being logged in
 Route::resource('products', 'ProductsController', ['only' => [
     'index', 'show', 'start'
 ]]);

@@ -2,7 +2,7 @@
 
 @section('content')
 <h2>Välkommen till YourProducts</h2>
-<p>Se kommentarer om ny musik och hitta var du kan köpa dem. Vi visar pris och betyg.</p>
+<p>Se kommentarer om ny musik och i vilka affärer du kan köpa dem. Vi visar pris och betyg.</p>
 
 <div class="container" style="width: 500px;">
   <h4>Nya album</h4>
@@ -36,8 +36,8 @@
     <div class="item">
       <img src="https://s-media-cache-ak0.pinimg.com/736x/a9/95/9c/a9959c17c8260650136fdc4a7d8bb218.jpg" alt="Justin Bieber" style="width:100%;">
       <div class="carousel-caption">
-        <h3>Justin Bieber feat Luis Fonsi</h3>
-        <p>Despacito</p>
+        <h3>Adele</h3>
+        <p>25</p>
       </div>
     </div>
 

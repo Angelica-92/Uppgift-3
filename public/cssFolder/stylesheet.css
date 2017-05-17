@@ -1,3 +1,37 @@
+
 #brand {
-  color: #404040; !important
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #00b300;
+}
+.nav > .open > a:visited {
+  color: #595959;
+}
+.nav > li > a:hover {
+  color: #333333; !important
+}
+.nav > li > a:active {
+  color: #333333; !important
+}
+.listAll {
+  height: 60px;
+  box-shadow: 1px 1px 0.5px 0.5px;
+}
+
+.navColor {
+  background-color: #595959;
+  color: white;
+  font-size: 17px;
+}
+.noStyle {
+  text-decoration: none;
+  color: #333333;
+  font-size: 15px;
+}
+li > a:hover {
+  color: #595959; !important
+
+}
+#bold {
+  font-weight: bold;
 }
