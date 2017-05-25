@@ -25,7 +25,7 @@
   <br>
   @foreach($stores as $store)
     <br>
-    <label class="checkbox-inline"><input type="checkbox" id="store_id" name="store_id"> {{ $store->name }}, {{ $store->city }}</label>
+    <label class="checkbox-inline"><input type="checkbox" value="{{ $store->id }}" id="store_id" name="store_id"> {{ $store->name }}, {{ $store->city }}</label>
     <br>
   @endforeach
   <br>
