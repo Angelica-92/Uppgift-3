@@ -25,11 +25,11 @@
   <br>
   @foreach($stores as $store)
     <br>
-    <label class="checkbox-inline"><input type="checkbox" value=""> {{ $store->name }}, {{ $store->city }}</label>
+    <label class="checkbox-inline"><input type="checkbox" id="store_id" name="store_id"> {{ $store->name }}, {{ $store->city }}</label>
     <br>
   @endforeach
   <br>
   <br>
-  <input type="submit" value="Spara product" class="btn btn-success"><p></p>
+  <input type="submit" value="Spara product" class="btn btn-success" style="float:right;"><p></p>
   </form>
 @endsection

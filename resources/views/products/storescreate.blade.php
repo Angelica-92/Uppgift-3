@@ -13,6 +13,6 @@
     <label for="title">Stad</label>
     <input type="text" class="form-control" id="city" name="city" placeholder="Skriv stad här...">
   </div>
-  <input type="submit" value="Spara product" class="btn btn-success"><p></p>
+  <input type="submit" value="Spara product" class="btn btn-success" style="float:right;"><p></p>
   </form>
 @endsection

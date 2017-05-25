@@ -43,10 +43,11 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
       $product = new Product;
-      $product->album = $request->get("album");
-      $product->title = $request->get("title");
-      $product->price = $request->get("price");
-      $product->image = $request->get("image");
+      $product->store_id = $request->input("store_id");
+      $product->album = $request->input("album");
+      $product->title = $request->input("title");
+      $product->price = $request->input("price");
+      $product->image = $request->input("image");
       $product->save();
       return redirect()->action('ProductsController@index')->with('status', 'Produkten är sparad!');
     }
@@ -60,11 +61,12 @@ class ProductsController extends Controller
     public function show($id)
     {
       $product = Product::find($id);
-      $review = Review::find($id);
+      //$review = Review::find($id);
+      $reviews = Review::where('product_id','=',$product->id)->get();
       $store = Store::find($id);
       return view("products.show", [
        "product" => $product,
-       "review" => $review,
+       "reviews" => $reviews,
        "store" => $store
      ]);
     }
@@ -93,10 +95,10 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
       $product = Product::find($id);
-      $product->album = $request->get("album");
-      $product->title = $request->get("title");
-      $product->price = $request->get("price");
-      $product->image = $request->get("image");
+      $product->album = $request->input("album");
+      $product->title = $request->input("title");
+      $product->price = $request->input("price");
+      $product->image = $request->input("image");
       $product->save();
       return redirect()->action('ProductsController@index')->with('status', 'Produkten är nu uppdaterad!');
     }

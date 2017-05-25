@@ -39,8 +39,8 @@ class StoresController extends Controller
     public function store(Request $request)
     {
       $store = new Store;
-      $store->name = $request->get("name");
-      $store->city = $request->get("city");
+      $store->name = $request->input("name");
+      $store->city = $request->input("city");
       $store->save();
       return redirect()->action('StoresController@index')->with('status', 'Affären är sparad!');
     }
@@ -83,8 +83,8 @@ class StoresController extends Controller
     public function update(Request $request, $id)
     {
       $store = Store::find($id);
-      $store->name = $request->get("name");
-      $store->city = $request->get("city");
+      $store->name = $request->input("name");
+      $store->city = $request->input("city");
       $store->save();
       return redirect()->action('StoresController@index')->with('status', 'Affären är nu uppdaterad!');
     }

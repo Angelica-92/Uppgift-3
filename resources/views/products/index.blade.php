@@ -4,7 +4,7 @@
 @section('content')
 
 <h2>Produkter</h2>
-@if (session('status'))
+@if (session('success'))
   <div class="alert alert-info" role="alert">{{ session('status') }}</div>
 @endif
 <p>Här är en lista på produkter:</p>

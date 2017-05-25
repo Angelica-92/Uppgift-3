@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
   public function products() {
-  return $this->belongsToMany('App\Product');
+  return $this->hasOne('App\Product');
   }
 }

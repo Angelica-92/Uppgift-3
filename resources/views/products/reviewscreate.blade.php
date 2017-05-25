@@ -3,13 +3,13 @@
 @section('content')
 <h2>Lägg till en ny kommentar</h2>
 
-<form action="/stores" method="post">
+<form action="/reviews" method="post">
   {{ csrf_field() }}
   <div class="form-group">
       <label for="album">Välj album att kommentera:</label>
-      <select type="text" class="form-control" id="album">
+      <select type="text" class="form-control" id="product_id" name="product_id">
         @foreach($products as $product)
-        <option> {{ $product->title }} - {{ $product->album }}</option>
+        <option value="{{ $product->id }}"> {{ $product->title }} - {{ $product->album }}</option>
         @endforeach
       </select>
       </div>
@@ -27,6 +27,8 @@
   <option>5</option>
 </select>
 </div>
-  <input type="submit" value="Spara product" class="btn btn-success"><p></p>
+  <input type="submit" value="Spara product" class="btn btn-success" style="float:right;"><p></p>
   </form>
+
+  
 @endsection

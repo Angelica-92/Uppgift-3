@@ -17,7 +17,7 @@ class ReviewsController extends Controller
     {
       $reviews = Review::all();
       return view("products.reviewsindex", [
-      "reviews" => $reviews,
+      "reviews" => $reviews
       ]);
     }
 
@@ -43,8 +43,9 @@ class ReviewsController extends Controller
     public function store(Request $request)
     {
       $review = new Review;
-      $review->comment = $request->get("comment");
-      $review->rating = $request->get("rating");
+      $review->product_id = $request->input("product_id");
+      $review->comment = $request->input("comment");
+      $review->rating = $request->input("rating");
       $review->save();
       return redirect()->action('ReviewsController@index')->with('status', 'Kommentaren är sparad!');
     }
@@ -87,8 +88,8 @@ class ReviewsController extends Controller
     public function update(Request $request, $id)
     {
       $review = Review::find($id);
-      $review->comment = $request->get("comment");
-      $review->rating = $request->get("rating");
+      $review->comment = $request->input("comment");
+      $review->rating = $request->input("rating");
       $review->save();
       return redirect()->action('ReviewsController@index')->with('status', 'Kommentaren är nu uppdaterad!');
     }
