@@ -1,4 +1,4 @@
-@extends('products.master')
+@extends('master')
 
 @section('content')
 <h2>Välkommen till YourProducts</h2>

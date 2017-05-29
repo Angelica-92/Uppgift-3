@@ -1,4 +1,4 @@
-@extends('products.master')
+@extends('master')
 
 @section('content')
 <h2>Lägg till en ny kommentar</h2>
@@ -30,5 +30,5 @@
   <input type="submit" value="Spara product" class="btn btn-success" style="float:right;"><p></p>
   </form>
 
-  
+
 @endsection

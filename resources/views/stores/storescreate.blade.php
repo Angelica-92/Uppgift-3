@@ -1,4 +1,4 @@
-@extends('products.master')
+@extends('master')
 
 @section('content')
 <h2>Lägg till en ny affär</h2>
