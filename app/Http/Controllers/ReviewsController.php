@@ -16,7 +16,7 @@ class ReviewsController extends Controller
     public function index()
     {
       $reviews = Review::all();
-      return view("products.reviewsindex", [
+      return view("reviews.reviewsindex", [
       "reviews" => $reviews
       ]);
     }
@@ -29,7 +29,7 @@ class ReviewsController extends Controller
     public function create()
     {
       $products = Product::all();
-      return view("products.reviewscreate", [
+      return view("reviews.reviewscreate", [
       "products" => $products,
       ]);
     }
@@ -59,7 +59,7 @@ class ReviewsController extends Controller
     public function show($id)
     {
       $review = Review::find($id);
-      return view("products.show", [
+      return view("reviews.show", [
        "review" => $review,
      ]);
     }
@@ -73,7 +73,7 @@ class ReviewsController extends Controller
     public function edit($id)
     {
       $review = Review::find($id);
-      return view("products.reviewsedit", [
+      return view("reviews.reviewsedit", [
        "review" => $review
      ]);
     }

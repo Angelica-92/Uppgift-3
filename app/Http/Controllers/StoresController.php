@@ -15,7 +15,7 @@ class StoresController extends Controller
     public function index()
     {
       $stores = Store::all();
-      return view("products.storesindex", [
+      return view("stores.storesindex", [
       "stores" => $stores,
       ]);
     }
@@ -27,7 +27,7 @@ class StoresController extends Controller
      */
     public function create()
     {
-      return view("products.storescreate");
+      return view("stores.storescreate");
     }
 
     /**
@@ -54,7 +54,7 @@ class StoresController extends Controller
     public function show($id)
     {
       $store = Store::find($id);
-      return view("products.show", [
+      return view("stores.show", [
        "store" => $store
        ]);
     }
@@ -68,7 +68,7 @@ class StoresController extends Controller
     public function edit($id)
     {
       $store = Store::find($id);
-      return view("products.storesedit", [
+      return view("stores.storesedit", [
        "store" => $store
      ]);
     }
