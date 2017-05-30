@@ -10,6 +10,6 @@ class Product extends Model
   return $this->hasMany('App\Review');
   }
   public function stores() {
-  return $this->belongsToMany('App\Store');
+  return $this->hasMany('App\Store');
   }
 }

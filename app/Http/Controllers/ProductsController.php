@@ -28,9 +28,10 @@ class ProductsController extends Controller
      */
     public function create()
     {
+
       $stores = Store::all();
       return view("products.create", [
-      "stores" => $stores,
+      "stores" => $stores
       ]);
     }
 
@@ -64,7 +65,7 @@ class ProductsController extends Controller
 
       $store = Store::find($id);
       $reviews = Review::where('product_id','=',$product->id)->get();
-      $store = Store::where('store_id','=',$product->id)->get();
+      $store = Store::where('store_id')->get();
       return view("products.show", [
        "product" => $product,
        "reviews" => $reviews,
