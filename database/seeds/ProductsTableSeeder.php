@@ -14,21 +14,33 @@ class ProductsTableSeeder extends Seeder
     {
         DB::table('products')->insert([
           [
+<<<<<<< HEAD
             //'store_id' => 1,
+=======
+            'store_id'=> 1,
+>>>>>>> feature/printData
             'album' => 'Divide',
             'title' => 'Ed Sheeran',
             'price' => 260,
             'image' => 'https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Divide_cover.png/220px-Divide_cover.png',
           ],
           [
+<<<<<<< HEAD
             //'store_id' => 2,
+=======
+            'store_id'=> 1,
+>>>>>>> feature/printData
             'album' => 'Kristaller',
             'title' => 'Laleh',
             'price' => 150,
             'image' => 'http://gfx.bloggar.aftonbladet-cdn.se/wp-content/blogs.dir/456/files/2016/09/KRISTALLER-COVER.',
           ],
           [
+<<<<<<< HEAD
             //'store_id' => 1,
+=======
+            'store_id'=> 2,
+>>>>>>> feature/printData
             'album' => '25',
             'title' => 'Adele',
             'price' => 99,

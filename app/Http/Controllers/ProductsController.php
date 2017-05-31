@@ -65,11 +65,11 @@ class ProductsController extends Controller
       //$stores = Store::all();
       $store = Store::find($id);
       $reviews = Review::where('product_id','=',$product->id)->get();
-      //$store = Product::where('store_id', $stores->id)->get();
+
       return view("products.show", [
        "product" => $product,
        "reviews" => $reviews,
-       "store" => $store
+       //"stores" => $stores
      ]);
     }
 

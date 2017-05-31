@@ -6,7 +6,9 @@
     <h3>{{ $product->title }} - {{ $product->album }}</h3>
 
     <p>{{ $product->price }} kr</p>
-    
+
+
+
     <img src="{{ $product->image }}" alt="{{ $product->title }}" style="width:304px;height:228px;">
   <br>
   <br>
