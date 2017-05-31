@@ -63,9 +63,9 @@ class ProductsController extends Controller
     {
       $product = Product::find($id);
 
-      $store = Store::find($id);
+      $stores = Store::all();
       $reviews = Review::where('product_id','=',$product->id)->get();
-      $store = Store::where('store_id')->get();
+      $store = Product::where('store_id', $stores->id)->get();
       return view("products.show", [
        "product" => $product,
        "reviews" => $reviews,
