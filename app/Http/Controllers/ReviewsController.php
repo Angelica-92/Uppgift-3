@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Review;
+use App\Product;
 
 class ReviewsController extends Controller
 {
@@ -13,7 +15,10 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        //
+      $reviews = Review::all();
+      return view("reviews.reviewsindex", [
+      "reviews" => $reviews
+      ]);
     }
 
     /**
@@ -23,7 +28,10 @@ class ReviewsController extends Controller
      */
     public function create()
     {
-        //
+      $products = Product::all();
+      return view("reviews.reviewscreate", [
+      "products" => $products,
+      ]);
     }
 
     /**
@@ -34,7 +42,12 @@ class ReviewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $review = new Review;
+      $review->product_id = $request->input("product_id");
+      $review->comment = $request->input("comment");
+      $review->rating = $request->input("rating");
+      $review->save();
+      return redirect()->action('ReviewsController@index')->with('status', 'Kommentaren är sparad!');
     }
 
     /**
@@ -45,7 +58,10 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-        //
+      $review = Review::find($id);
+      return view("reviews.show", [
+       "review" => $review,
+     ]);
     }
 
     /**
@@ -56,7 +72,10 @@ class ReviewsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $review = Review::find($id);
+      return view("reviews.reviewsedit", [
+       "review" => $review
+     ]);
     }
 
     /**
@@ -68,7 +87,11 @@ class ReviewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $review = Review::find($id);
+      $review->comment = $request->input("comment");
+      $review->rating = $request->input("rating");
+      $review->save();
+      return redirect()->action('ReviewsController@index')->with('status', 'Kommentaren är nu uppdaterad!');
     }
 
     /**
@@ -79,6 +102,7 @@ class ReviewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Review::destroy($id);
+      return redirect()->action('ReviewsController@index')->with('status', 'kommentaren är raderad!');
     }
 }

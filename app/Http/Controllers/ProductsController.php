@@ -1,8 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\Store;
+use App\Review;
+
 
 class ProductsController extends Controller
 {
@@ -15,10 +18,9 @@ class ProductsController extends Controller
     {
       $products = Product::all();
       return view("products.index", [
-      "products" => $products
-    ]);
+      "products" => $products,
+      ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +28,11 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view("products.create");
+
+      $stores = Store::all();
+      return view("products.create", [
+      "stores" => $stores
+      ]);
     }
 
     /**
@@ -38,8 +44,11 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
       $product = new Product;
-      $product->title = $request->get("title");
-      $product->price = $request->get("price");
+      //$product->store_id = $request->input("store_id");
+      $product->album = $request->input("album");
+      $product->title = $request->input("title");
+      $product->price = $request->input("price");
+      $product->image = $request->input("image");
       $product->save();
       return redirect()->action('ProductsController@index')->with('status', 'Produkten är sparad!');
     }
@@ -53,9 +62,15 @@ class ProductsController extends Controller
     public function show($id)
     {
       $product = Product::find($id);
+      //$stores = Store::all();
+      $store = Store::find($id);
+      $reviews = Review::where('product_id','=',$product->id)->get();
+      //$store = Product::where('store_id', $stores->id)->get();
       return view("products.show", [
-      "product" => $product
-   ]);
+       "product" => $product,
+       "reviews" => $reviews,
+       "store" => $store
+     ]);
     }
 
     /**
@@ -68,8 +83,8 @@ class ProductsController extends Controller
     {
       $product = Product::find($id);
       return view("products.edit", [
-      "product" => $product
-   ]);
+       "product" => $product
+     ]);
     }
 
     /**
@@ -82,8 +97,10 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
       $product = Product::find($id);
-      $product->title = $request->get("title");
-      $product->price = $request->get("price");
+      $product->album = $request->input("album");
+      $product->title = $request->input("title");
+      $product->price = $request->input("price");
+      $product->image = $request->input("image");
       $product->save();
       return redirect()->action('ProductsController@index')->with('status', 'Produkten är nu uppdaterad!');
     }

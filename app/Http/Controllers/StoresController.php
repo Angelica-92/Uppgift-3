@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Store;
 
 class StoresController extends Controller
 {
@@ -13,7 +14,10 @@ class StoresController extends Controller
      */
     public function index()
     {
-        //
+      $stores = Store::all();
+      return view("stores.storesindex", [
+      "stores" => $stores,
+      ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class StoresController extends Controller
      */
     public function create()
     {
-        //
+      return view("stores.storescreate");
     }
 
     /**
@@ -34,7 +38,11 @@ class StoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $store = new Store;
+      $store->name = $request->input("name");
+      $store->city = $request->input("city");
+      $store->save();
+      return redirect()->action('StoresController@index')->with('status', 'Affären är sparad!');
     }
 
     /**
@@ -45,7 +53,10 @@ class StoresController extends Controller
      */
     public function show($id)
     {
-        //
+      $store = Store::find($id);
+      return view("stores.show", [
+       "store" => $store
+       ]);
     }
 
     /**
@@ -56,7 +67,10 @@ class StoresController extends Controller
      */
     public function edit($id)
     {
-        //
+      $store = Store::find($id);
+      return view("stores.storesedit", [
+       "store" => $store
+     ]);
     }
 
     /**
@@ -68,7 +82,11 @@ class StoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $store = Store::find($id);
+      $store->name = $request->input("name");
+      $store->city = $request->input("city");
+      $store->save();
+      return redirect()->action('StoresController@index')->with('status', 'Affären är nu uppdaterad!');
     }
 
     /**
@@ -79,6 +97,7 @@ class StoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Store::destroy($id);
+      return redirect()->action('StoresController@index')->with('status', 'Affären är raderad!');
     }
 }
