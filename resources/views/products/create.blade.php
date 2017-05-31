@@ -23,11 +23,11 @@
     <input type="text" class="form-control" id="image" name="image" placeholder="Skriv url här för att hämta bild...">
   </div>
   <br>
-  @foreach($stores as $store)
+<!--  @foreach($stores as $store)
     <br>
     <label class="checkbox-inline"><input type="checkbox" value="{{ $store->id }}" id="store_id" name="store_id"> {{ $store->name }}, {{ $store->city }}</label>
     <br>
-  @endforeach
+  @endforeach -->
   <br>
   <br>
   <input type="submit" value="Spara product" class="btn btn-success" style="float:right;"><p></p>

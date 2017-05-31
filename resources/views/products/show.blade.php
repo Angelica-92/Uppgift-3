@@ -6,10 +6,7 @@
     <h3>{{ $product->title }} - {{ $product->album }}</h3>
 
     <p>{{ $product->price }} kr</p>
-    <p id="bold">Finns i butikerna:</p>
-    @foreach($stores as $store)
-      <p> {{ $store->name }} i {{ $store->city }} </p>
-    @endforeach
+    
     <img src="{{ $product->image }}" alt="{{ $product->title }}" style="width:304px;height:228px;">
   <br>
   <br>

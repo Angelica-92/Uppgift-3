@@ -44,7 +44,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
       $product = new Product;
-      $product->store_id = $request->input("store_id");
+      //$product->store_id = $request->input("store_id");
       $product->album = $request->input("album");
       $product->title = $request->input("title");
       $product->price = $request->input("price");
@@ -62,10 +62,10 @@ class ProductsController extends Controller
     public function show($id)
     {
       $product = Product::find($id);
-
-      $stores = Store::all();
+      //$stores = Store::all();
+      $store = Store::find($id);
       $reviews = Review::where('product_id','=',$product->id)->get();
-      $store = Product::where('store_id', $stores->id)->get();
+      //$store = Product::where('store_id', $stores->id)->get();
       return view("products.show", [
        "product" => $product,
        "reviews" => $reviews,
