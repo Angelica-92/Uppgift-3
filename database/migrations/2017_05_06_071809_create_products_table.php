@@ -15,7 +15,11 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
+<<<<<<< HEAD
             //$table->integer('store_id');
+=======
+            $table->integer('store_id');
+>>>>>>> feature/printData
             $table->text('album');
             $table->text('title');
             $table->float('price');
