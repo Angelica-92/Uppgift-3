@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('products.start');
-});
+
+
+Route::resource('/', 'HomeController', [
+    'index'
+]);
+
 
 Auth::routes();
 
@@ -30,6 +33,7 @@ Route::group(["middleware" => "auth"], function () {
   Route::resource('stores', 'StoresController', ['except' => [
       'show', 'index', 'start'
   ]]);
+
 });
 
 //index, show and start can be accessed without being logged in

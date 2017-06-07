@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Store;
+use App\Review;
 
 class HomeController extends Controller
 {
@@ -27,9 +28,11 @@ class HomeController extends Controller
     {
         $products = Product::all();
         $stores = Store::all();
-        return view('products.index', [
+        $reviews = Review::all();
+        return view('start', [
         "products" => $products,
-        "stores" => $stores
+        "stores" => $stores,
+        "reviews" => $reviews
       ]);
     }
 }
